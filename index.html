@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title>Rocket Tier</title>
+    <link rel="shortcut icon" href="imgs/logo.png">
+    <link rel="stylesheet" href="css/main.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  </head>
+  <body class="body">
+      <div class="container">
+          <div class="menu">
+            <ul>
+              <li class="logo"> <img src="imgs/logo.png"></li>
+              <li href="index.php" class="active">Home</li>
+              <li href="pettions.php" >Pettions</li>
+              <li href="contact.php" >Contact</li>
+              <li> <a href="login.php" class="login-btn"> <span>Login</span> </a> </li>
+            </ul>
+          </div>
+          <div class="banner">
+
+            <div class="app-text">
+              <h1>Help The World Out <br> Virtually!</h1>
+              <p>We provide things like pettions, dontaion, etc. links <br> that you can go check out and help the people in need!</p>
+              <div class="play-btn">
+                <div class="play-btn-inner">
+                  <i class="fa fa-play"></i>
+                </div>
+                <small><b>LEARN MORE</b></small>
+              </div>
+            </div>
+            <div class="app-pictures">
+              <img src="imgs/change.png">
+            </div>
+          </div>
+          <div class="quick-links">
+            <ul>
+              <li><a class="Share-Btn" ><i class="fa fa-share-alt"></i> <p>SHARE</p> </a></li>
+              <li> <i class="fa fa-audio-description"></i> <p>RECENT NEWS</p> </li>
+              <li> <i class="fa fa-cog"></i> <p>ANALYTICS</p> </li>
+            </ul>
+          </div>
+
+          <div class="social-icons">
+            <ul>
+              <li><a href="https://instagram.com"> <i class="fa fa-instagram"></i></a></li>
+              <li><a href="#"> <i class="fa fa-twitter"></i></a></li>
+              <li><a href="#"> <i class="fa fa-facebook"></i></a></li>
+              <li><a href="#"> <i class="fa fa-reddit"></i></a></li>
+            </ul>
+          </div>
+
+          <div class="overlay" >
+            <div class="share" style="border-radius: 10px ;">
+              <label class="ShareMsg" style="color: white; font-size: 10px; font-weight: bold;"></label>
+              <h2 style="color: white;">Share via:</h2>
+              <div class="icons">
+                <ul>
+                  <a> <i class="fa fa-instagram"></i></a>
+                  <a> <i class="fa fa-twitter"></i></a>
+                  <a> <i class="fa fa-facebook"></i></a>
+                  <a> <i class="fa fa-reddit"></i></a>
+                  <a> <i class="fa fa-link"></i></a>
+                </ul>
+              </div>
+            </div>
+          </div>
+      </div>
+
+
+
+      <script>
+
+          const shareButton = document.querySelector('.Share-Btn')
+          const overlay = document.querySelector('.overlay')
+          const shareModal = document.querySelector('.share')
+          const ShareMsg = document.querySelector('.ShareMsg')
+
+          const title = window.document.title;
+          const url = window.document.location.href;
+
+          shareButton.addEventListener('click', event => {
+            if(navigator.share){
+              navigator.share({
+                title: `${title}`,
+                text: 'Check out Rocket tier',
+                url: `${url}`,
+              }).then(() => {
+                ShareMsg.innerHTML = "Thanks for sharing!";
+                console.log('Thanks for sharing!');
+              })
+              .catch(console.error);
+              ShareMsg.innerHTML = console.error;
+            } else {
+              overlay.classList.add('show-share');
+              shareModal.classList.add('show-share');
+            }
+          })
+
+          overlay.addEventListener('click', () =>{
+            overlay.classList.remove('show-share');
+          })
+
+      </script>
+
+  </body>
+</html>
